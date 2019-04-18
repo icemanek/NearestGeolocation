@@ -24,11 +24,11 @@ public class LocalizationsDaoImpl implements LocalizationsDao{
     }
 
     @Override
-    public Localizations findNearest() {
+    public Localizations findNearest(Double latitude, Double longtitude) {
 
-    Query showNearestLocation = entityManager.createQuery("");
+        Query lat = entityManager.createQuery("select latitude, longtitude from Localizations ");
 
-    return (Localizations) showNearestLocation;
+    return (Localizations) lat;
 
     }
 }

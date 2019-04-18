@@ -1,24 +1,23 @@
 package pl.geolocation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.geolocation.model.Localizations;
 import pl.geolocation.model.LocalizationsDao;
+import java.util.List;
 
 @Controller
 @RequestMapping
 public class GeneralController {
 
-    private LocalizationsDao localizationsDo;
+    private LocalizationsDao localizationsDao;
 
     @Autowired
     private void Localizations(LocalizationsDao localizationsDo){
-        this.localizationsDo = localizationsDo;
+        this.localizationsDao = localizationsDo;
     }
 
     @RequestMapping(value = "/")
@@ -32,7 +31,7 @@ public class GeneralController {
         public String showAllLocalizations(Model model){
 
 
-            model.addAttribute("localizations", localizationsDo.findAll());
+            model.addAttribute("localizations", localizationsDao.findAll());
 
             return "showList";
         }
@@ -48,16 +47,28 @@ public class GeneralController {
 
 
         @PostMapping(value = "/show")
-        public String showNearestLocalization(@ModelAttribute Localizations localizations, Model model){
+        @ResponseBody
+        public Double showNearestLocalization(@ModelAttribute Localizations localizations, @RequestParam(value = "szerokosc") Double war1,@RequestParam(value = "dlugosc")Double war2){
+
+            final double RADIUS = 3963.1676;
+
+            double result;
+            double dist = 0.0;
+
+        List<Localizations> near = localizationsDao.findAll();
+
+        for(double i = 0; i < near.size(); i++){
+
+            result = Math.sin(localizations.getLatitude()) * Math.sin(war1) + Math.sin(localizations.getLongtitude()) * Math.sin(war2);
+
+            dist = Math.acos(result);
 
 
-        model.addAttribute("localizations", localizationsDo.findNearest());
-
-        return "userNearestLocalization";
         }
 
 
+            return dist * RADIUS;
 
-
+        }
 
 }

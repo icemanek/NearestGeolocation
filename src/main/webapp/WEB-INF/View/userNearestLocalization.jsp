@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: emil
@@ -11,8 +12,6 @@
     <title>Najbliższa lokalizacja</title>
 </head>
 <body>
-
-
 
 
 <a href="/"> Strona główna</a>

@@ -21,10 +21,10 @@ public class Localizations {
     private String nazwa;
 
     @NotNull(message = "Nie może być puste!")
-    private double latitude;
+    private Double latitude;
 
     @NotNull(message = "Nie może być puste!")
-    private double longtitude;
+    private Double longtitude;
 
 
     public String getNazwa() {
@@ -35,7 +35,7 @@ public class Localizations {
         this.nazwa = nazwa;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
@@ -43,7 +43,7 @@ public class Localizations {
         this.latitude = latitude;
     }
 
-    public double getLongtitude() {
+    public Double getLongtitude() {
         return longtitude;
     }
 
@@ -51,13 +51,5 @@ public class Localizations {
         this.longtitude = longtitude;
     }
 
-    public Localizations(String nazwa, double latitude, double longtitude) {
-        this.nazwa = nazwa;
-        this.latitude = latitude;
-        this.longtitude = longtitude;
-    }
 
-
-    public Localizations() {
-    }
 }

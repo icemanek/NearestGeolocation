@@ -22,8 +22,8 @@ public class LocalizationServiceImpl implements LocationService{
     }
 
     @Override
-    public Localizations findNearest() {
+    public Localizations findNearest(Double latitude, Double longtitude) {
 
-      return localizationsDao.findNearest();
+      return localizationsDao.findNearest(latitude,longtitude);
     }
 }
