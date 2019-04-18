@@ -38,37 +38,22 @@ public class GeneralController {
 
 
         @GetMapping(value = "/show")
-        public String showLocationForm(Model model){
-
-        model.addAttribute("localizations", new Localizations());
+        public String showLocationForm(){
 
         return "userLocalization";
+
         }
 
 
         @PostMapping(value = "/show")
         @ResponseBody
-        public Double showNearestLocalization(@ModelAttribute Localizations localizations, @RequestParam(value = "szerokosc") Double war1,@RequestParam(value = "dlugosc")Double war2){
+        public Double showNearestLocalization(@ModelAttribute Localizations localizations, @RequestParam Double lat,@RequestParam Double log){
 
-            final double RADIUS = 3963.1676;
+        
 
-            double result;
-            double dist = 0.0;
-
-        List<Localizations> near = localizationsDao.findAll();
-
-        for(double i = 0; i < near.size(); i++){
-
-            result = Math.sin(localizations.getLatitude()) * Math.sin(war1) + Math.sin(localizations.getLongtitude()) * Math.sin(war2);
-
-            dist = Math.acos(result);
-
-
-        }
-
-
-            return dist * RADIUS;
-
-        }
+       return lat+log;
 
 }
+
+}
+

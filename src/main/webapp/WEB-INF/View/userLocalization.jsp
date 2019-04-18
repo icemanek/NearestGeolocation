@@ -31,16 +31,22 @@
 </head>
 <body>
 
-    <form:form method="post" modelAttribute="localizations" >
+   <form action="/show" method="post">
 
-        <form:input path="latitude"  placeholder="Wpisz szerokość" name="form1" type="double" class="form-control" title="Format XX.XX" minlenght="1" required="true" />
+       <label>
+       Szerokosc<br>
+       <input type="text" pattern="[0-9]+(\.[0-9][0-9]?)?" onkeypress="return (event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57" name="lat" step="0.01" required />
+       </label>
 
-        <form:input path="longtitude"  placeholder="Wpisz wysokość" name="form2" type="double" class="form-control" title="Format XX.XX" minlenght="1" required="true" />
+       <label>
+           WYsokość<br>
+           <input type="text" onkeypress="return (event.charCode === 173 ||event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57 " pattern="[0-9]+(\.[0-9][0-9]?)?" name="log" required />
+
+       </label>
 
             <input type="submit" onclick="required()" value="Pokaż">
 
-    </form:form>
-
+   </form>
 
 <a href="/"> Strona główna</a>
 
