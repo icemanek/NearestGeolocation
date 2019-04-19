@@ -47,11 +47,16 @@ public class GeneralController {
 
     @PostMapping(value = "/show")
     @ResponseBody
-    public Double showNearestLocalization(@ModelAttribute Localizations localizations, @RequestParam Double lat, @RequestParam Double log) {
+    public Localizations showNearestLocalization(@ModelAttribute Localizations localizations, @RequestParam Double lat, @RequestParam Double log) {
+
+       Localizations loc1 = localizationsService.findNearest(localizations.getLatitude(),lat);
+       Localizations loc2 = localizationsService.findNearest(localizations.getLongtitude(),log);
 
 
-        return lat + log;
+       return loc1;
+
+
+
     }
-
 }
 

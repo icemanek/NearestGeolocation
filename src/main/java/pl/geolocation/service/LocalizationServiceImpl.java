@@ -24,9 +24,9 @@ public class LocalizationServiceImpl implements LocalizationsService {
         return localizationsRepository.findAll();
     }
 
-//    @Override
-//    public Localizations findNearest(Double latitude, Double longtitude) {
-//
-//        return localizationsRepository.findNearest(latitude, longtitude);
-//    }
+    @Override
+    public Localizations findNearest(Double latitude, Double longtitude) {
+
+        return localizationsRepository.findNearest(latitude, longtitude);
+    }
 }
