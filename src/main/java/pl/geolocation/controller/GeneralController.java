@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.geolocation.model.Localizations;
 import pl.geolocation.service.LocalizationsService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping
 public class GeneralController {
@@ -27,17 +29,17 @@ public class GeneralController {
     @RequestMapping(value = "/all")
     public String showAllLocalizations(Model model) {
 
+        List<Localizations> list = localizationsService.findAll();
 
-        model.addAttribute("localizations", localizationsService.findAll());
+        model.addAttribute("localizations", list);
 
         return "showList";
     }
 
 
     @GetMapping(value = "/show")
-    public String showLocationForm(Model model) {
+    public String showLocationForm() {
 
-        model.addAttribute("localizations", localizationsService.findAll());
 
         return "userLocalization";
 

@@ -4,27 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.geolocation.model.Localizations;
 
+
 import java.util.List;
 
 @Service
 public class LocalizationServiceImpl implements LocalizationsService {
 
-    private LocalizationsService localizationsService;
+    private LocalizationsRepository localizationsRepository;
 
     @Autowired
-    private void local(LocalizationsService localizationsService) {
-        this.localizationsService = localizationsService;
+    private void local(LocalizationsRepository localizationsRepository) {
+        this.localizationsRepository = localizationsRepository;
     }
 
 
     @Override
     public List<Localizations> findAll() {
-        return localizationsService.findAll();
+
+        return localizationsRepository.findAll();
     }
 
-    @Override
-    public Localizations findNearest(Double latitude, Double longtitude) {
-
-        return localizationsService.findNearest(latitude, longtitude);
-    }
+//    @Override
+//    public Localizations findNearest(Double latitude, Double longtitude) {
+//
+//        return localizationsRepository.findNearest(latitude, longtitude);
+//    }
 }
