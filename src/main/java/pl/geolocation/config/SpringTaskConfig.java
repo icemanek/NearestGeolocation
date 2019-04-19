@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
-@ComponentScan({ "pl.geolocation" })
+@ComponentScan({"pl.geolocation"})
 public class SpringTaskConfig {
 
 }

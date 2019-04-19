@@ -10,11 +10,14 @@
 <html>
 <head>
     <title>Lista lokalizacji</title>
+
+    <link href="../css/home.css" rel="stylesheet">
+
 </head>
 <body>
 
-<h3>Lista lokalizacji</h3>
-<table cellpadding="2" cellspacing="2" border="1">
+
+<table>
     <tr>
         <th>Nazwa</th>
         <th>Szerokość Geograficzna</th>
@@ -32,6 +35,7 @@
 
 </c:forEach>
 </table>
+<br>
 
 <a href="/"> Strona główna</a>
 

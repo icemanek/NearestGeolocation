@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: emil
@@ -11,22 +12,19 @@
 <head>
     <title>Wpisz lokalizację</title>
 
-    <script>
-        function required()
-        {
-            var empt = document.forms["form1"]["form2"].value;
-            if (empt == "")
-            {
-                alert("Please input a Value");
-                return false;
-            }
-            else
-            {
-                alert('Code has accepted : you can try another');
-                return true;
-            }
-        }
+    <link href="../css/home.css" rel="stylesheet">
 
+    <script>
+       function nav(){
+
+           var x = document.getElementById('location');
+
+           console.log(x);
+           navigator.geolocation.getCurrentPosition(function(location) {
+              x.innerHTML="Wysokość: "+ location.coords.latitude
+               +"<br>Szerokość: "+ location.coords.longitude;
+
+           });}
     </script>
 </head>
 <body>
@@ -34,19 +32,23 @@
    <form action="/show" method="post">
 
        <label>
-       Szerokosc<br>
-       <input type="text" pattern="[0-9]+(\.[0-9][0-9]?)?" onkeypress="return (event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57" name="lat" step="0.01" required />
-       </label>
+       Szerokosc
+       <input type="number" pattern="[0-9]+(\.[0-9][0-9]?)?"  name="lat" step="0.01" required />
+       </label><br>
 
        <label>
-           WYsokość<br>
-           <input type="text" onkeypress="return (event.charCode === 173 ||event.charCode === 8 || event.charCode === 0) ? null : event.charCode >= 48 && event.charCode <= 57 " pattern="[0-9]+(\.[0-9][0-9]?)?" name="log" required />
+           Wysokość
+           <input type="number"  pattern="[0-9]+(\.[0-9][0-9]?)?" step="0.01" name="log" required />
 
-       </label>
+       </label><br><br>
 
-            <input type="submit" onclick="required()" value="Pokaż">
+            <input type="submit" class="btn-liquid" onclick="validate()" value="Oblicz">
 
    </form>
+
+   <button class="btn-liquid" onclick="nav()">Moja Lokalizacja</button>
+
+    <p id="location"></p>
 
 <a href="/"> Strona główna</a>
 

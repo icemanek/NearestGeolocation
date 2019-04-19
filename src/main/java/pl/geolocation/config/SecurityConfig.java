@@ -13,11 +13,9 @@ public class SecurityConfig {
     private DataSource dataSource;
 
     @Autowired
-    private void DataSource(DataSource dataSource){
+    private void DataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-
 
 
     @Bean

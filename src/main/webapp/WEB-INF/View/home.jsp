@@ -9,10 +9,11 @@
 <html>
 <head>
     <title>Strona główna</title>
+    <link href="../css/home.css" rel="stylesheet">
+
 </head>
 <body>
 
-Wybierz akcję:
 
 <a href="/all">Lista lokalizacji</a>
 
